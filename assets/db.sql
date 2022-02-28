@@ -24,7 +24,7 @@ create table person(
     
     name varchar(35),
     lastName varchar(35),
-    email varchar(35),
+    email varchar(35)
 );
 
 create table provider(
