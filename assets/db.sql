@@ -1,6 +1,4 @@
-
 create database db;
-
 use db;
 create table status(
 	idStatus int auto_increment,
@@ -26,16 +24,13 @@ create table person(
     
     name varchar(35),
     lastName varchar(35),
-    email varchar(35)
+    email varchar(35),
 );
-
-
 
 create table provider(
 	idProvider int auto_increment,
     primary key(idProvider),
     name varchar(35),
-    
     idPerson int,
     foreign key(idPerson) references person(idPerson)
 );
@@ -57,9 +52,6 @@ create table product(
     
     idProvider int,
     foreign key(idProvider) references provider(idProvider),
-    
-    salePrice double(9,2),
-    purchasePrice double(9,2),
     
 	idGenre int,
     foreign key(idGenre) references genre(idGenre),
@@ -83,7 +75,10 @@ create table detailProduct(
     foreign key(idSize) references size(idSize),
     
     idColor int,
-    foreign key(idColor) references color(idColor)
+    foreign key(idColor) references color(idColor),
+    
+    salePrice double(9,2),
+    purchasePrice double(9,2)
 );
 
 create table tag(
@@ -108,7 +103,7 @@ create table phone(
 	idPhone int auto_increment,
     primary key(idPhone),
     
-    phone varchar(45),
+    phone varchar(12),
     
     idPerson int,
     foreign key(idPerson) references person(idPerson)
@@ -141,7 +136,7 @@ create table store(
     
 );
 
-	create table payment(
+create table payment(
 	idPayment int auto_increment,
     primary key(idPayment),
     
@@ -196,3 +191,4 @@ create table inventory(
     
     minimumAlert int
 );
+
