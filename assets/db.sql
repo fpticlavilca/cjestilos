@@ -70,6 +70,9 @@ create table color(
 create table detailProduct(
 	idDetailProduct int auto_increment,
     primary key(idDetailProduct),
+
+    idProduct int,
+    foreign key(idProduct) references product(idProduct),
     
     idSize int,
     foreign key(idSize) references size(idSize),
@@ -78,7 +81,10 @@ create table detailProduct(
     foreign key(idColor) references color(idColor),
     
     salePrice double(9,2),
-    purchasePrice double(9,2)
+    purchasePrice double(9,2),
+    
+    idStatus int,
+    foreign key(idStatus) references status(idStatus)
 );
 
 create table tag(
