@@ -6,11 +6,16 @@ create table status(
     name varchar(35)
 );
 
+insert into status(name)values("disable");
+insert into status(name)values("enable");
+
 create table genre(
 	idGenre int auto_increment,
     primary key(idGenre),
     name varchar(35)
 );
+insert into genre(name)values("Masculino");
+insert into genre(name)values("Femenino");
 
 create table category(
 	idCategory int auto_increment,
@@ -18,13 +23,22 @@ create table category(
     name varchar(35)
 );
 
+insert into category(name)values("Pantalon");
+insert into category(name)values("Poleras");
+insert into category(name)values("Polos manga corta");
+insert into category(name)values("Polos manga larga");
+insert into category(name)values("Camisas");
+insert into category(name)values("Blusas");
+
 create table person(
 	idPerson int auto_increment,
     primary key(idPerson),
     
     name varchar(35),
     lastName varchar(35),
-    email varchar(35)
+    email varchar(35),
+    direction varchar(35),
+    phone varchar(9)
 );
 
 create table provider(
@@ -32,8 +46,11 @@ create table provider(
     primary key(idProvider),
     name varchar(35),
     idPerson int,
+    
     foreign key(idPerson) references person(idPerson)
 );
+insert into provider 
+
 
 create table size(
 	idSize int auto_increment,
@@ -103,16 +120,6 @@ create table tagsProduct(
     
     idTag int,
     foreign key(idTag) references tag(idTag)
-);
-
-create table phone(
-	idPhone int auto_increment,
-    primary key(idPhone),
-    
-    phone varchar(12),
-    
-    idPerson int,
-    foreign key(idPerson) references person(idPerson)
 );
 
 create table mode(
