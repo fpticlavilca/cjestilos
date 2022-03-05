@@ -24,13 +24,6 @@ create table category(
     name varchar(35)
 );
 
-insert into category(name)values("Pantalon");
-insert into category(name)values("Poleras");
-insert into category(name)values("Polos manga corta");
-insert into category(name)values("Polos manga larga");
-insert into category(name)values("Camisas");
-insert into category(name)values("Blusas");
-
 /*create store procedure category*/
 delimiter //
 create procedure createCategory(in nameIn varchar(35))
@@ -38,8 +31,6 @@ create procedure createCategory(in nameIn varchar(35))
 		insert into category(name) values (nameIn);
     end
 //
-
-call createCategory(short);createCategorycreateCategory
 
 create table person(
 	idPerson int auto_increment,
@@ -62,7 +53,20 @@ create table provider(
 );
 
 /*create store procedure provider*/
-
+delimiter //
+create procedure provider(
+	in namePerson varchar(35), 
+    in lastNamePerson varchar(35), 
+    in emailPerson varchar(35),
+    in directionPerson varchar(35),
+    in phonePerson varchar(35),
+    in nameProvider varchar(35)
+	)
+    begin
+		insert into person(name,)
+		
+    end
+// 
 
 create table size(
 	idSize int auto_increment,
