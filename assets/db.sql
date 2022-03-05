@@ -8,6 +8,7 @@ create table status(
 
 insert into status(name)values("disable");
 insert into status(name)values("enable");
+insert into status(name)values("delete");
 
 create table genre(
 	idGenre int auto_increment,
@@ -30,6 +31,16 @@ insert into category(name)values("Polos manga larga");
 insert into category(name)values("Camisas");
 insert into category(name)values("Blusas");
 
+/*create store procedure category*/
+delimiter //
+create procedure createCategory(in nameIn varchar(35))
+	begin 
+		insert into category(name) values (nameIn);
+    end
+//
+
+call createCategory(short);createCategorycreateCategory
+
 create table person(
 	idPerson int auto_increment,
     primary key(idPerson),
@@ -49,7 +60,8 @@ create table provider(
     
     foreign key(idPerson) references person(idPerson)
 );
-insert into provider 
+
+/*create store procedure provider*/
 
 
 create table size(
