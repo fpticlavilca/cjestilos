@@ -24,14 +24,6 @@ create table category(
     name varchar(35)
 );
 
-/*create store procedure category*/
-delimiter //
-create procedure createCategory(in nameIn varchar(35))
-	begin 
-		insert into category(name) values (nameIn);
-    end
-//
-
 create table person(
 	idPerson int auto_increment,
     primary key(idPerson),
@@ -47,26 +39,20 @@ create table provider(
 	idProvider int auto_increment,
     primary key(idProvider),
     name varchar(35),
-    idPerson int,
+    direction varchar(35)
+);
+create table personProvider(
+	idPersonProvider int auto_increment,
+    primary key(idPersonProvider),
     
-    foreign key(idPerson) references person(idPerson)
+    idPerson int,
+    foreign key(idPerson) references person(idPerson),
+    
+    idProvider int,
+    foreign key(idProvider) references provider(idProvider)
 );
 
-/*create store procedure provider*/
-delimiter //
-create procedure provider(
-	in namePerson varchar(35), 
-    in lastNamePerson varchar(35), 
-    in emailPerson varchar(35),
-    in directionPerson varchar(35),
-    in phonePerson varchar(35),
-    in nameProvider varchar(35)
-	)
-    begin
-		insert into person(name,)
-		
-    end
-// 
+
 
 create table size(
 	idSize int auto_increment,
