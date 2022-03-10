@@ -207,3 +207,5 @@ create table inventory(
     minimumAlert int
 );
 
+insert into person(name,lastName,email,direction,phone)values("Joel","gutierrez","pticlavilca@gmail.com","av. restauracion 365","910632156");
+select * from personprovider;s

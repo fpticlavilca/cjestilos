@@ -8,6 +8,7 @@ create procedure createCategory(in nameIn varchar(35))
 //
 
 /*create provider*/
+use db;
 delimiter //
 create procedure createPersonProvider(
 	namePerson varchar(35), 
@@ -16,16 +17,16 @@ create procedure createPersonProvider(
     directionPerson varchar(35),
     phonePerson varchar(35),
     nameProvider varchar(35)
-    
-    
 	)
     begin
-		declare @personId int;
-        declare @providerId int;
-	
+		DECLARE keyPerson int default 0;
+        DECLARE keyProvider int default 0;
+        
 		insert into person(name,lastName,email,direction,phone)values(namePerson,lastNamePerson,emailPerson,directionPerson,phonePerson);
-        insert into personProvider(idPerson,idProvider)values(last_insert_id(),"");
-		insert into provider(name,idPerson)values(nameProvider,last_insert_id());
+        set keyPerson = last_insert_id();
+		insert into provider(name)values(nameProvider);
+        set keyProvider = last_insert_id();
+        insert into personProvider(idPerson,idProvider)values(keyPerson,keyProvider);
     end
 //
 
@@ -45,3 +46,4 @@ create procedure addPersonToProvider(
 		insert into provider(name,idPerson)values(nameProvider,last_insert_id());
     end
 //
+
