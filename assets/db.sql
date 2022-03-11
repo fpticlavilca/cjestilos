@@ -1,3 +1,4 @@
+
 create database db;
 use db;
 create table status(
@@ -13,10 +14,11 @@ insert into status(name)values("delete");
 create table genre(
 	idGenre int auto_increment,
     primary key(idGenre),
-    name varchar(35)
+    name varchar(2)
 );
-insert into genre(name)values("Masculino");
-insert into genre(name)values("Femenino");
+insert into genre(name)values("F");
+insert into genre(name)values("M");
+
 
 create table category(
 	idCategory int auto_increment,
@@ -28,6 +30,9 @@ create table person(
 	idPerson int auto_increment,
     primary key(idPerson),
     
+    idGenre int,
+    foreign key(idGenre) references genre(idGenre),
+	
     name varchar(35),
     lastName varchar(35),
     email varchar(35),
@@ -50,6 +55,27 @@ create table personProvider(
     
     idProvider int,
     foreign key(idProvider) references provider(idProvider)
+);
+
+create table user(
+	idUser int auto_increment,
+    primary key(idUser),
+    name varchar(35)
+);
+
+insert into user(name)values("admin");
+insert into user(name)values("saler");
+insert into user(name)values("database");
+
+create table personUser(
+	idPersonUser int auto_increment,
+    primary key(idPersonUser),
+    
+    idUser int,
+    foreign key(idUser) references user(idUser),
+    
+    name varchar(35),
+    password varchar(35)
 );
 
 
@@ -124,25 +150,7 @@ create table tagsProduct(
     foreign key(idTag) references tag(idTag)
 );
 
-create table mode(
-	idMode int,
-    primary key(idMode),
-    
-    name varchar(35)
-);
 
-create table user(
-	idUser int auto_increment,
-    primary key(idUser),
-    name varchar(35),
-    password varchar(35),
-    
-    idMode int,
-    foreign key(idMode) references mode(idMode),
-    
-    idPerson int,
-    foreign key(idPerson) references person(idPerson)
-);
 
 create table store(
 	idStore int auto_increment,
@@ -207,5 +215,12 @@ create table inventory(
     minimumAlert int
 );
 
-insert into person(name,lastName,email,direction,phone)values("Joel","gutierrez","pticlavilca@gmail.com","av. restauracion 365","910632156");
-select * from personprovider;s
+insert into person(name,lastName,email,direction,phone)values("Andres Hurtado","gutierrez","pabloticlavilca@gmail.com","av. restauracion 365","910632156");
+select * from personprovider;
+
+select * from person;
+
+select * from personprovider inner join person on personprovider.idPerson = person.idPerson;
+
+
+select * from person;

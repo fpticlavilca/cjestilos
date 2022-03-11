@@ -31,19 +31,27 @@ create procedure createPersonProvider(
 //
 
 delimiter //
-create procedure addPersonToProvider(
-	namePerson varchar(35), 
-    lastNamePerson varchar(35), 
-    emailPerson varchar(35),
-    directionPerson varchar(35),
-    phonePerson varchar(35),
-    
-    primaryKeyProvider int
-	)
+
+select provider.name, person.name, person.phone from provider
+	inner join personprovider on provider.idProvider = personprovider.idProvider
+	inner join person on person.idPerson = personprovider.idPerson;
+
+delimiter //
+	create procedure createUser(
+		namePerson varchar(35), 
+		lastNamePerson varchar(35), 
+		emailPerson varchar(35),
+		directionPerson varchar(35),
+		phonePerson varchar(35),
+        idUser int,
+        userName varchar(35),
+        userPassword varchar(35)
+        
+    ) 
     begin
 		insert into person(name,lastName,email,direction,phone)values(namePerson,lastNamePerson,emailPerson,directionPerson,phonePerson);
-	
-		insert into provider(name,idPerson)values(nameProvider,last_insert_id());
+        insert into personUser(idUser,name,password)values(idUser,userName,userPassword);
     end
-//
+// 
 
+select * from personuser;
