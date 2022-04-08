@@ -1,4 +1,3 @@
-
 create database db;
 use db;
 create table status(
@@ -73,6 +72,9 @@ create table personUser(
     
     idUser int,
     foreign key(idUser) references user(idUser),
+
+    idPerson int,
+    foreign key(idPerson) references person(idPerson),
     
     name varchar(35),
     password varchar(35)
@@ -90,7 +92,6 @@ create table product(
 	idProduct int auto_increment,
     primary key(idProduct),
     mame varchar(35),
-    qrcode varchar(50),
     
     idCategory int,
     foreign key(idCategory) references category(idCategory),
@@ -214,13 +215,3 @@ create table inventory(
     
     minimumAlert int
 );
-
-insert into person(name,lastName,email,direction,phone)values("Andres Hurtado","gutierrez","pabloticlavilca@gmail.com","av. restauracion 365","910632156");
-select * from personprovider;
-
-select * from person;
-
-select * from personprovider inner join person on personprovider.idPerson = person.idPerson;
-
-
-select * from person;

@@ -1,0 +1,15 @@
+call db.categoryC('Polos');
+call db.categoryC('Poleras');
+call db.categoryC('Jeans');
+call db.categoryC('Blusas');
+call db.categoryC('Vestidos');
+call db.categoryC('Enterizos');
+call db.categoryC('Chompas');
+call db.categoryC('Shorts');
+call db.categoryC('Joggers');
+call db.categoryC('Toreros');
+call db.categoryC('Baggi');
+call db.categoryC('Faldas');
+call db.categoryC('Bustieres');
+call db.categoryC('Pantalones');
+call db.categoryC('Tutus');
