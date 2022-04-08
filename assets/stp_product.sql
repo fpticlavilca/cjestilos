@@ -6,27 +6,37 @@ create procedure productC(
         idCategory_param int,
         idProvider_param int,
         idGenre_param int,
-        idStatus_param int,
-        
-        idSize_param int,
-        idColor_param int,
-        salePrice_param double(9,2),
-        purchasePrice_param double(9,2),
         idStatus_param int
-
 	)
     begin 
-		DECLARE idProduct_param int default 0;
 		insert into product(name,idCategory,idProvider,idGenre,idStatus)values(nameProduct_param,idCategory_param,idProvider_param,idGenre_param,idStatus_param);
-        set idProduct_param = last_insert_id();
-        
-        insert into detailproduct(idProduct,idSize,idColor,salePrice,purchasePrice,idStatus)values(idProduct_param,idSize_param,idColor_param,salePrice_param,purchasePrice_param,idStatus_param);
     end
 //
 delimiter //
-create procedure productR(
-		
-	)
+create procedure productR()
     begin 
+		select * from product;
     end
+//
+
+delimiter //
+create procedure productU(
+		in idProduct_param int,
+        
+		in nameProduct_param varchar(35),
+        in idCategory_param int,
+        in idProvider_param int,
+        in idGenre_param int,
+        in idStatus_param int
+	)
+	begin 
+		update product 
+			set 
+				name = nameProduct_param,
+				idCategory = idCategory_param,
+                idProvider = idProvider_param,
+                idGenre = idGenre_param,
+                idStatus = idStatus_param
+                where idProduct = idProduct_param;
+	end
 //

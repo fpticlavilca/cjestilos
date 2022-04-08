@@ -71,7 +71,7 @@ delimiter //
 //
 
 delimiter //
-	create procedure userChangePassword(
+	create procedure userCH(
 		idPersonUser_param int,
 		password_param varchar(35)
 	)
