@@ -40,3 +40,14 @@ create procedure productU(
                 where idProduct = idProduct_param;
 	end
 //
+delimiter //
+create procedure productD(
+		in idProduct_param int
+	)
+	begin
+		update product
+			set 
+            idStatus = 3
+		where idProduct = idProduct_param;
+    end
+//
