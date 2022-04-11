@@ -53,7 +53,12 @@ delimiter //
         where idProvider = @idProvider_var;
     end
 //
-
+delimiter //
+	create procedure providerR()
+    begin
+		select * from provider;
+    end
+//
 delimiter //
 	create procedure providerD(
 		idPersonProvider_param int

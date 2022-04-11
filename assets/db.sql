@@ -91,7 +91,7 @@ create table size(
 create table product(
 	idProduct int auto_increment,
     primary key(idProduct),
-    mame varchar(35),
+    name varchar(35),
     
     idCategory int,
     foreign key(idCategory) references category(idCategory),
@@ -130,7 +130,9 @@ create table detailProduct(
     purchasePrice double(9,2),
     
     idStatus int,
-    foreign key(idStatus) references status(idStatus)
+    foreign key(idStatus) references status(idStatus),
+    
+    quantity int
 );
 
 create table tag(
@@ -202,16 +204,4 @@ create table pos(
     
     idSale int,
     foreign key(idSale) references sale(idSale)
-);
-
-create table inventory(
-	idInventory int auto_increment,
-    primary key(idInventory),
-    
-    idProduct int,
-    foreign key(idProduct) references product(idProduct),
-    
-    quantity int,
-    
-    minimumAlert int
 );
