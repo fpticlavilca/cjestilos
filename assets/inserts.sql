@@ -48,27 +48,9 @@ insert into catalogStatus(name)values("delete");
 insert into catalogTag(name)values("1 botones");
 insert into catalogTag(name)values("2 botones");
 insert into catalogTag(name)values("3 botones");
+insert into catalogTag(name)values("Estampado");
+insert into catalogTag(name)values("Rasgado");
 
 insert into user(name)values("admin");
 insert into user(name)values("saler");
 insert into user(name)values("database");
-
-call db.categoryC('Polos');
-call db.categoryC('Poleras');
-call db.categoryC('Jeans');
-call db.categoryC('Blusas');
-call db.categoryC('Vestidos');
-call db.categoryC('Enterizos');
-call db.categoryC('Chompas');
-call db.categoryC('Shorts');
-call db.categoryC('Joggers');
-call db.categoryC('Toreros');
-call db.categoryC('Baggi');
-
-call db.categoryC('Faldas');
-call db.categoryC('Bustieres');
-call db.categoryC('Pantalones');
-call db.categoryC('Tutus');
-call db.categoryC('Capas');
-
-

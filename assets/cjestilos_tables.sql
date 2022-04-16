@@ -135,6 +135,11 @@ create table payment(
 create table sale(
 	idSale int auto_increment,
     primary key(idSale),
+    
+    quantity int,
+    
+    discount double,
+    subtotal double,
     total double(9,2),
     
     idPayment int,
@@ -147,25 +152,14 @@ create table sale(
 create table saleDetail(
 	idSaleDetail int,
     primary key(idSaleDetail),
-    
-    quantity int,
-        
+
+    idDetailProduct int,
+    foreign key(idDetailProduct) references detailProduct(idDetailProduct),
+
     idSale int,
-    foreign key(idSale) references sale(idSale),
-    
-    idProduct int,
-    foreign key(idProduct) references product(idProduct),
+    foreign key(idSale) references sale(idSale),    
     
     idCatalogStatus int,
     foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
-create table pos(
-	idPos int auto_increment,
-    primary key(idPos),
-    
-    quantity int,
-    
-    idSale int,
-    foreign key(idSale) references sale(idSale)
-);

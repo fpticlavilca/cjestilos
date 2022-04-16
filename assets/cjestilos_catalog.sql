@@ -26,5 +26,5 @@ create table catalogColor(
 create table catalogTag(
 	idCatalogTag int auto_increment,
     primary key(idCatalogTag),
-    code varchar(35)
+    name varchar(35)
 );
