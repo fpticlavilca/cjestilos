@@ -1,4 +1,4 @@
-use db;
+use cjestilos;
 delimiter //
 	create procedure userC(
 		namePerson varchar(35), 
@@ -36,7 +36,7 @@ delimiter //
 		username_param varchar(35),
 		password_param varchar(35),
 		
-		idGenre_param int,
+		idCatalogGenre_param int,
 		name_param varchar(35),
 		lastName_param varchar(35),
 		email_param varchar(35),
@@ -51,7 +51,7 @@ delimiter //
         where idPersonUser = idPersonUser_param;
         
         update person 
-        set idGenre = idGenre_param,
+        set idCatalogGenre = idCatalogGenre_param,
 			name = name_param,
             lastName = lastName_param,
             email = email_param,

@@ -1,36 +1,10 @@
-create database db;
-use db;
-create table status(
-	idStatus int auto_increment,
-	primary key(idStatus),
-    name varchar(35)
-);
-
-insert into status(name)values("disable");
-insert into status(name)values("enable");
-insert into status(name)values("delete");
-
-create table genre(
-	idGenre int auto_increment,
-    primary key(idGenre),
-    name varchar(2)
-);
-insert into genre(name)values("F");
-insert into genre(name)values("M");
-
-
-create table category(
-	idCategory int auto_increment,
-    primary key(idCategory),
-    name varchar(35)
-);
 
 create table person(
 	idPerson int auto_increment,
     primary key(idPerson),
     
-    idGenre int,
-    foreign key(idGenre) references genre(idGenre),
+    idCatalogGenre int,
+    foreign key(idCatalogGenre) references catalogGenre(idCatalogGenre),
 	
     name varchar(35),
     lastName varchar(35),
@@ -45,6 +19,7 @@ create table provider(
     name varchar(35),
     direction varchar(35)
 );
+
 create table personProvider(
 	idPersonProvider int auto_increment,
     primary key(idPersonProvider),
@@ -53,7 +28,10 @@ create table personProvider(
     foreign key(idPerson) references person(idPerson),
     
     idProvider int,
-    foreign key(idProvider) references provider(idProvider)
+    foreign key(idProvider) references provider(idProvider),
+    
+    idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
 create table user(
@@ -61,10 +39,6 @@ create table user(
     primary key(idUser),
     name varchar(35)
 );
-
-insert into user(name)values("admin");
-insert into user(name)values("saler");
-insert into user(name)values("database");
 
 create table personUser(
 	idPersonUser int auto_increment,
@@ -77,15 +51,19 @@ create table personUser(
     foreign key(idPerson) references person(idPerson),
     
     name varchar(35),
-    password varchar(35)
+    password varchar(35),
+    
+    idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
-
-
-create table size(
-	idSize int auto_increment,
-    primary key(idSize),
-    name varchar(35)
+create table category(
+	idCategory int auto_increment,
+    primary key(idCategory),
+    name varchar(35),
+    
+    idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
 create table product(
@@ -99,18 +77,12 @@ create table product(
     idProvider int,
     foreign key(idProvider) references provider(idProvider),
     
-	idGenre int,
-    foreign key(idGenre) references genre(idGenre),
+	idCatalogGenre int,
+    foreign key(idCatalogGenre) references catalogGenre(idCatalogGenre),
     
-    idStatus int,
-    foreign key(idStatus) references status(idStatus)
-);
-
-create table color(
-	idColor int auto_increment,
-    primary key(idColor),
-	
-    name varchar(6)
+    idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
+    
 );
 
 create table detailProduct(
@@ -120,26 +92,19 @@ create table detailProduct(
     idProduct int,
     foreign key(idProduct) references product(idProduct),
     
-    idSize int,
-    foreign key(idSize) references size(idSize),
+    idCatalogSize int,
+    foreign key(idCatalogSize) references catalogSize(idCatalogSize),
     
-    idColor int,
-    foreign key(idColor) references color(idColor),
+    idCatalogColor int,
+    foreign key(idCatalogColor) references catalogColor(idCatalogColor),
     
     salePrice double(9,2),
     purchasePrice double(9,2),
     
-    idStatus int,
-    foreign key(idStatus) references status(idStatus),
+    quantity int,
     
-    quantity int
-);
-
-create table tag(
-	idTag int auto_increment,
-    primary key(idTag),
-    
-    code varchar(35)
+    idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
 create table tagsProduct(
@@ -149,17 +114,14 @@ create table tagsProduct(
     idProduct int,
     foreign key(idProduct) references product(idProduct),
     
-    idTag int,
-    foreign key(idTag) references tag(idTag)
+    idCatalogTag int,
+    foreign key(idCatalogTag) references catalogTag(idCatalogTag)
 );
-
-
 
 create table store(
 	idStore int auto_increment,
     primary key(idStore),
-    name varchar(35)
-    
+    name varchar(35)    
 );
 
 create table payment(
@@ -178,8 +140,8 @@ create table sale(
     idPayment int,
     foreign key(idPayment) references payment(idPayment),
     
-    idStatus int,
-    foreign key(idStatus) references status(idStatus)
+    idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
 create table saleDetail(
@@ -192,9 +154,11 @@ create table saleDetail(
     foreign key(idSale) references sale(idSale),
     
     idProduct int,
-    foreign key(idProduct) references product(idProduct)    
+    foreign key(idProduct) references product(idProduct),
+    
+    idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
-
 
 create table pos(
 	idPos int auto_increment,

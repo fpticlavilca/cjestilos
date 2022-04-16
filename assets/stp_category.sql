@@ -1,5 +1,4 @@
-use db;
-/*CRUD*/
+use cjestilos;
 
 delimiter //
 create procedure categoryC(in nameIn varchar(35))

@@ -1,4 +1,4 @@
-use db;
+use cjestilos;
 delimiter //
 	create procedure providerC(
 		namePerson varchar(35), 
@@ -25,7 +25,7 @@ delimiter //
 	create procedure providerU(
 		idPersonProvider_param int,
     
-        idGenre int,
+        idCatalogGenre int,
 		namePerson varchar(35), 
 		lastNamePerson varchar(35), 
 		emailPerson varchar(35),
@@ -40,7 +40,9 @@ delimiter //
         set @idProvider_var = (select idProvider from personProvider where idPersonProvider = idPersonProvider_param);
         
 		update person 
-			set name = namePerson, 
+			set 
+            idCatalogGenre = idCatalogGenre,
+            name = namePerson, 
             lastName = lastNamePerson,
             email = emailPerson,
             direction = directionPerson,

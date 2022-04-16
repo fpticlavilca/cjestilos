@@ -1,27 +1,57 @@
-insert into genre(name)values("H");
-insert into genre(name)values("M");
-insert into genre(name)values("HN");
-insert into genre(name)values("MN");
-insert into genre(name)values("HB");
-insert into genre(name)values("MB");
-insert into genre(name)values("WO");
+insert into catalogGenre(name)values("H");
+insert into catalogGenre(name)values("M");
+insert into catalogGenre(name)values("HN");
+insert into catalogGenre(name)values("MN");
+insert into catalogGenre(name)values("HB");
+insert into catalogGenre(name)values("MB");
+insert into catalogGenre(name)values("WO");
 
-insert into color(name)values("000000");
-insert into color(name)values("FFFFFF");
-insert into color(name)values("000000");
-insert into color(name)values("000000");
-insert into color(name)values("000000");
-insert into color(name)values("000000");
-insert into color(name)values("000000");
-insert into color(name)values("000000");
+insert into catalogColor(name)values("000000");
+insert into catalogColor(name)values("FFFFFF");
+insert into catalogColor(name)values("000000");
+insert into catalogColor(name)values("000000");
+insert into catalogColor(name)values("000000");
+insert into catalogColor(name)values("000000");
+insert into catalogColor(name)values("000000");
+insert into catalogColor(name)values("000000");
 
-call db.providerC('Elizabeth', 'Espinoza', 'eli@gmail.com', 'AV. El cerro el pino', '97654321', 'Picarones Corp', 'Av. Mercado Mariscal');
-call db.providerC('Carla', 'Jhoana', 'carjho@gmail.com', 'Galeria Shadai 3er piso', '910635253', 'Pompis','Mercado Asalella');
-call db.providerC('Jhoana', 'Lisa', 'jholi@gmail.com', 'Santa Lucia 3er piso', '98025652', 'Polos Emp', 'Saga Falabella');
+insert into catalogSize(name)values("XS");
+insert into catalogSize(name)values("S");
+insert into catalogSize(name)values("M");
+insert into catalogSize(name)values("L");
+insert into catalogSize(name)values("XL");
+insert into catalogSize(name)values("XXL");
 
-call db.userC('Paul', 'Ticlavilca', 'pticlavilca@gmail.com', 'Av. Lorenzo Encalada 178 A', '910632716', 1, 'pticlavilca@gmail.com', 'amnesiac');
-call db.userC('Cesia', 'Leon', 'cesia.kleon@gmail.com', 'Av. Lorenzo Encalada 178 A', '953105002', 1, 'cesiak', 'teclado');
-call db.userC('Merly', 'Guevara', 'merlyguevara@gmail.com', 'Plaza Vea 178', '974547965', 3, 'merlygueva', 'merlygue');
+insert into catalogSize(name)values("2");
+insert into catalogSize(name)values("4");
+insert into catalogSize(name)values("6");
+insert into catalogSize(name)values("8");
+insert into catalogSize(name)values("10");
+insert into catalogSize(name)values("12");
+insert into catalogSize(name)values("14");
+insert into catalogSize(name)values("16");
+
+insert into catalogSize(name)values("26");
+insert into catalogSize(name)values("28");
+insert into catalogSize(name)values("30");
+insert into catalogSize(name)values("32");
+insert into catalogSize(name)values("34");
+insert into catalogSize(name)values("36");
+insert into catalogSize(name)values("38");
+insert into catalogSize(name)values("40");
+insert into catalogSize(name)values("42");
+
+insert into catalogStatus(name)values("disable");
+insert into catalogStatus(name)values("enable");
+insert into catalogStatus(name)values("delete");
+
+insert into catalogTag(name)values("1 botones");
+insert into catalogTag(name)values("2 botones");
+insert into catalogTag(name)values("3 botones");
+
+insert into user(name)values("admin");
+insert into user(name)values("saler");
+insert into user(name)values("database");
 
 call db.categoryC('Polos');
 call db.categoryC('Poleras');
@@ -34,9 +64,11 @@ call db.categoryC('Shorts');
 call db.categoryC('Joggers');
 call db.categoryC('Toreros');
 call db.categoryC('Baggi');
+
 call db.categoryC('Faldas');
 call db.categoryC('Bustieres');
 call db.categoryC('Pantalones');
 call db.categoryC('Tutus');
+call db.categoryC('Capas');
 
 

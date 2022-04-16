@@ -1,16 +1,16 @@
-use db;
+use cjestilos;
 delimiter //
 create procedure detailtProductC(
 		in idProduct_param int,
-        in idSize_param int,
-        in idColor_param int,
+        in idCatalogSize_param int,
+        in idCatalogColor_param int,
         in salePrice_param double,
         in purchasePrice_param double,
-        in idStatus_param int,
+        in idCatalogStatus_param int,
         in quantity_param int
 	)
 	begin
-		insert into detailProduct(idProduct,idSize,idColor,salePrice,idStatus,quantity)values(idProduct_param,idSize_param,idColor_param,salePrice_param,purchasePrice_param,idStatus_param,quantity_param); 
+		insert into detailProduct(idProduct,idCatalogSize,idCatalogColor,salePrice,idCatalogStatus,quantity)values(idProduct_param,idCatalogSize_param,idCatalogColor_param,salePrice_param,purchasePrice_param,idCatalogStatus_param,quantity_param); 
     end
 //
 
@@ -21,34 +21,38 @@ delimiter //
 		select * from detailtProduct;
     end
 //
+
 delimiter //
 	create procedure detailProductU(
-		in idDetailProduct int,
+		in idDetailtProduct_param int,
         
-    	in idProduct_param int,
-        in idSize_param int,
-        in idColor_param int,
+		in idProduct_param int,
+        in idCatalogSize_param int,
+        in idCatalogColor_param int,
         in salePrice_param double,
         in purchasePrice_param double,
-        in idStatus_param int,
+        in idCatalogStatus_param int,
         in quantity_param int
-	)
-	begin
+        )
+    begin
 		update detailtProduct
-        set
-		idSize = idSize_param,
-        idColor = idColor_param,
+        set idProduct = idProduct_param,
+        idCatalogSize = idCatalogSize_param,
+        idCatalogColor = idCatalogColor_param,
         salePrice = salePrice_param,
-        idStatus = idStatus_param,
-        quantity = quantity_param
-        where idDetailProduct = idProduct_param;
+        purchasePrice = purchasePrice_param,
+        idCatalogStatus = idCatalogStatus_param,
+        quantity = quatity_param
+        where idDetailtProduct = idDetailtProduct_param;
     end
 //
 delimiter //
-	create procedure detailProductD(
-		in idDetailProduct int
+	create procedure detailtProductD(
+		in idDetailtProduct_param int
     )
-    begin
-		update detailProduct set idStatus = 3; 
+    begin 
+		update detailProduct 
+        set idStatus = 3
+        where idDetailProduct = idDetailProduct_param;
     end
 //
