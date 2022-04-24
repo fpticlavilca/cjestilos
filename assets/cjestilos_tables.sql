@@ -107,15 +107,18 @@ create table detailProduct(
     foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
-create table tagsProduct(
-	idTagProduct int auto_increment,
-    primary key(idTagProduct),
+create table tagProduct(
+	idTaProduct int auto_increment,
+    primary key(idTaProduct),
     
     idProduct int,
     foreign key(idProduct) references product(idProduct),
     
     idCatalogTag int,
-    foreign key(idCatalogTag) references catalogTag(idCatalogTag)
+    foreign key(idCatalogTag) references catalogTag(idCatalogTag),
+    
+	idCatalogStatus int,
+	foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
 create table store(
