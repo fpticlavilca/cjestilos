@@ -385,7 +385,6 @@ delimiter //
 
 delimiter //
 	create procedure saleC(
-		in quantity_param int,
 		in discount_param double,
 		in subtotal_param double,
 		in total_param double,
@@ -394,7 +393,7 @@ delimiter //
 		in idCatalogStatus_param int
     )
     begin
-		insert into sale(quantity,discount,subtotal,total,idPayment,idEnterprise,idCatalogStatus)values(quantity_param,discount_param,subtotal_param,total_param,idPayment_param,idEnterprise_param,idCatalogStatus_param);
+		insert into sale(discount,subtotal,total,idPayment,idEnterprise,idCatalogStatus)values(discount_param,subtotal_param,total_param,idPayment_param,idEnterprise_param,idCatalogStatus_param);
     end
 //
 
@@ -409,7 +408,6 @@ delimiter //
 	create procedure saleU(
 		in idSale_param int,
     
-		in quantity_param int,
 		in discount_param double,
 		in subtotal_param double,
 		in total_param double,
@@ -419,7 +417,6 @@ delimiter //
     )
     begin 
 		update sale set
-        quantity = quantity_param,
 		discount = discount_param,
 		subtotal = subtotal_param,
 		total = total_param,
@@ -431,5 +428,61 @@ delimiter //
 //
 
 delimiter //
+	create procedure saleD(
+		in idSale_param int
+    )
+    begin
+		update sale set 
+        idCatalogStatus = 3
+        where idSale = idSale_param;
+    end
+//
 
+/*create crud detail sale*/
+
+delimiter //
+	create procedure saleDetailtC(
+		in quantity_param int,
+		in idDetailProduct_param int,
+        in idSale_param int,
+        in idCatalogStatus_param int
+    )
+    begin
+		insert into saleDetailt(quantity,idDetailtProduct,idSale,idCatalogStatus)values(quantity_param,idDetailtProduct_param,idSale_param,idCatalogStatus_param);
+    end
+//
+
+
+delimiter //
+	create procedure saledetailR(
+		in idDetailSale_param int
+    )
+    begin
+		select * from detailProduct where idDetailSale = idDetailSale_param; 
+    end
+//
+
+delimiter //
+	create procedure saledetailU(
+		in idSaleDetail_param int,
+    
+		in quantity_param int,
+		in idDetailProduct_param int,
+        in idSale_param int,
+        in idCatalogStatus_param int
+    )
+    begin
+		update saleDetail set
+        quantity = quantity_param,
+        idDetailProduct = idDetailProduct_param,
+        idSale = idSale_param,
+        idCatalogStatus = idCatalogStatus_param
+        where idDetail;
+    end
+//
+
+delimiter //
+	create procedure saledetailD()
+    begin
+    end
 //

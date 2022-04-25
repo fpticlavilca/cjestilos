@@ -135,8 +135,6 @@ create table sale(
 	idSale int auto_increment,
     primary key(idSale),
     
-    quantity int,
-    
     discount double,
     subtotal double,
     total double(9,2),
@@ -151,7 +149,9 @@ create table sale(
     foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
-create table saleDetail(
+create table saleDetail(	    
+    quantity int,
+
 	idSaleDetail int,
     primary key(idSaleDetail),
 
