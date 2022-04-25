@@ -13,22 +13,24 @@ create table person(
     phone varchar(9)
 );
 
-create table provider(
-	idProvider int auto_increment,
-    primary key(idProvider),
-    name varchar(35),
-    direction varchar(35)
+create table enterprise(
+	idEnterprise int auto_increment,
+    primary key(idEnterprise),
+    ruc varchar(11),
+    direction varchar(35),
+    telephone varchar(9),
+    name varchar(35)    
 );
 
-create table personProvider(
-	idPersonProvider int auto_increment,
-    primary key(idPersonProvider),
+create table personEnterprise(
+	idPersonEnterprise int auto_increment,
+    primary key(idPersonEnterprise),
     
     idPerson int,
     foreign key(idPerson) references person(idPerson),
     
-    idProvider int,
-    foreign key(idProvider) references provider(idProvider),
+    idEnterprise int,
+    foreign key(idEnterprise) references enterprise(idEnterprise),
     
     idCatalogStatus int,
     foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
@@ -74,8 +76,8 @@ create table product(
     idCategory int,
     foreign key(idCategory) references category(idCategory),
     
-    idProvider int,
-    foreign key(idProvider) references provider(idProvider),
+    idEnterprise int,
+    foreign key(idEnterprise) references enterprise(idEnterprise),
     
 	idCatalogGenre int,
     foreign key(idCatalogGenre) references catalogGenre(idCatalogGenre),
@@ -121,12 +123,6 @@ create table tagProduct(
 	foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
-create table store(
-	idStore int auto_increment,
-    primary key(idStore),
-    name varchar(35)    
-);
-
 create table payment(
 	idPayment int auto_increment,
     primary key(idPayment),
@@ -147,6 +143,9 @@ create table sale(
     
     idPayment int,
     foreign key(idPayment) references payment(idPayment),
+    
+    idEnterprise int,
+    foreign key(idEnterprise) references enterprise(idEnterprise),
     
     idCatalogStatus int,
     foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
