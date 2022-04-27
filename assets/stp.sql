@@ -32,10 +32,11 @@ create procedure catalogTagU(
 
 delimiter //
 create procedure catalogTagD(
+		in idCatalogStatus_param int,
 		in idCatalogTag_param int
     )
     begin
-		delete from catalogTag where idCatalogTag = idCatalogTag_param;
+		update catalogTag set idCatalogStatus = idCatalogStatus_param where idCatalogTag = idCatalogTag_param;
     end
 //
 
@@ -62,19 +63,22 @@ delimiter //
 
 delimiter //
 	create procedure tagProductD(
+		in idCatalogStatus_param int,
 		in idTagProduct_param int
     )
     begin
-		update tagProduct set idCatalogStatus = 3 where idTagProduct = idTagProduct_param;
+		update tagProduct set idCatalogStatus = idCatalogStatus_param where idTagProduct = idTagProduct_param;
     end
 //
 
 /*procedure crud category*/
 
 delimiter //
-create procedure categoryC(in nameIn varchar(35))
+create procedure categoryC(
+		in name_param varchar(35)
+    )
 	begin 
-		insert into category(name) values (nameIn);
+		insert into category(name) values (name_param);
     end
 //
 
@@ -86,19 +90,24 @@ create procedure categoryR()
 //
 
 delimiter //
-create procedure categoryU(in indexIn int, in nameIn varchar(35))
+create procedure categoryU(
+		in idCategory_param int, 
+		in name_param varchar(35)
+    )
 	begin
-		update category
-        set name = nameIn
-        where idCategory = indexIn;
+		update category set name = name_param where idCategory = idCategory_param;
 	end
 //
 
 delimiter //
-create procedure categoryD(in indexIn int)
+create procedure categoryD(
+	in idCatalogStatus_param int,
+	in idCategory_param int
+    )
 	begin
-		delete from category
-        where idCategory = indexIn;
+		update category set
+        idCatalogStatus = idCatalogStatus_param
+        where idCategory = idCategory_param;
 	end 
 //
 
@@ -106,11 +115,11 @@ create procedure categoryD(in indexIn int)
 
 delimiter //
 create procedure productC(
-		nameProduct_param varchar(35),
-        idCategory_param int,
-        idProvider_param int,
-        idCatalogGenre_param int,
-        idCatalogStatus_param int
+		in nameProduct_param varchar(35),
+        in idCategory_param int,
+        in idProvider_param int,
+        in idCatalogGenre_param int,
+        in idCatalogStatus_param int
 	)
     begin 
 		insert into product(name,idCategory,idProvider,idCatalogGenre,idCatalogStatus)values(nameProduct_param,idCategory_param,idProvider_param,idCatalogGenre_param,idCatalogStatus_param);
@@ -146,13 +155,11 @@ create procedure productU(
 //
 delimiter //
 create procedure productD(
+		in idCatalogStatus_param int,
 		in idProduct_param int
 	)
 	begin
-		update product
-			set 
-            idStatus = 3
-		where idProduct = idProduct_param;
+		update product set idCatalogStatus = idCatalogStatus_param where idProduct = idProduct_param;
     end
 //
 
@@ -207,11 +214,12 @@ delimiter //
 //
 delimiter //
 	create procedure detailtProductD(
+		in idCatalogStatus_param int,
 		in idDetailtProduct_param int
     )
     begin 
 		update detailProduct 
-        set idStatus = 3
+        set idCatalogStatus = idCatalogStatus_param
         where idDetailProduct = idDetailProduct_param;
     end
 //
@@ -241,6 +249,13 @@ delimiter //
 // 
 
 delimiter //
+	create procedure enterpriseR()
+    begin
+		select * from enterprise;
+    end
+//
+
+delimiter //
 	create procedure enterpriseU(
 		idPersonEnterprise_param int,
     
@@ -268,32 +283,24 @@ delimiter //
             phone = phonePerson
         where idPerson = @idPerson_var;
         
-        update enterprise
-        set name = nameEnterprise,
-        direction = directionEnterprise
-        where idEnterprise = @idEnterprise_var;
-    end
-//
-
-delimiter //
-	create procedure enterpriseR()
-    begin
-		select * from enterprise;
+        update enterprise set name = nameEnterprise, direction = directionEnterprise where idEnterprise = @idEnterprise_var;
     end
 //
 
 delimiter //
 	create procedure enterpriseD(
-		idPersonEnterprise_param int
+		in idCatalogStatus_param int,
+		in idPersonEnterprise_param int
 	)
   
     begin
 		set @idPerson_var = (select idPerson from personEnterprise where idPersonEnterprise = idPersonEnterprise_param);
 		set @idEnterprise_var = (select idEnterprise from personEnterprise where idPersonEnterprise = idPersonEnterprise_param);
         
-        delete from personEnterprise where idPersonEnterprise = idPersonEnterprise_param;
-		delete from person where idPerson = @idPerson_var;
-		delete from enterprise where idEnterprise = @idEnterprise_var;
+        
+        update personEnterprise set idCatalogStatus = idCatalogStatus_param  where idPersonEnterprise = idPersonEnterprise_param;
+		update person set idCatalogStatus = idCatalogStatus_param where idPerson = @idPerson_var;
+		update enterprise set idCatalogStatus = idCatalogStatus_param where idEnterprise = @idEnterprise_var;
         
     end
 //
@@ -303,21 +310,22 @@ delimiter //
 use cjestilos;
 delimiter //
 	create procedure userC(
-		namePerson varchar(35), 
-		lastNamePerson varchar(35), 
-		emailPerson varchar(35),
-		directionPerson varchar(35),
-		phonePerson varchar(35),
-        idUser int,
-        userName varchar(35),
-        userPassword varchar(35)
+		name_param varchar(35), 
+		lastName_param varchar(35), 
+		email_param varchar(35),
+		direction_param varchar(35),
+		phone_param varchar(35),
         
+        idUser_param int,
+        userName_param varchar(35),
+        userPassword_param varchar(35),
+        idCatalogStatus_param int
     ) 
     begin
 		DECLARE keyPerson int default 0;
-		insert into person(name,lastName,email,direction,phone)values(namePerson,lastNamePerson,emailPerson,directionPerson,phonePerson);
+		insert into person(name,lastName,email,direction,phone,idCatalogStatus)values(name_param,lastName_param,email_param,direction_param,phone_param,idCatalogStatus_param);
         set keyPerson = last_insert_id();
-        insert into personUser(idUser,idPerson,name,password)values(idUser,keyPerson,userName,userPassword);
+        insert into personUser(idUser,idPerson,name,password,idCatalogStatus)values(idUser_param,keyPerson,userName_param,userPassword_param,idCatalogStatus_param);
     end
 // 
 
@@ -365,10 +373,14 @@ delimiter //
 
 delimiter //
 	create procedure userD(
-		idPersonUser_param int
+		in idCatalogStatus_param int,
+		in idPersonUser_param int
 	)
     begin
-		delete from personUser where idPersonUser = idPersonUser_param;
+		set @idKeyPerson_var = (select idPerson from personUser where idPersonUser = idPersonUser_param);
+        update person set idCatalogStatus = idCatalogStatus_param where idPerson = @idKeyPerson_var;
+        
+		update personuser set  idCatalogStatus = idCatalogStatus_param where idPersonUser = idPersonUser_param;
     end
 //
 
@@ -429,12 +441,11 @@ delimiter //
 
 delimiter //
 	create procedure saleD(
+		in idCatalogStatus_param int,
 		in idSale_param int
     )
     begin
-		update sale set 
-        idCatalogStatus = 3
-        where idSale = idSale_param;
+		update sale set idCatalogStatus = idCatalogStatus_param where idSale = idSale_param;
     end
 //
 
@@ -483,11 +494,10 @@ delimiter //
 
 delimiter //
 	create procedure saledetailD(
+		in idCatalogStatus_param int,
 		in idSaleDetail_param int
     )
     begin
-		update saleDetail set
-        idCatalogStatus = 3
-        where idSaleDetail = idSaleDetail_param;
+		update saleDetail set idCatalogStatus = idCatalogStatus_param where idSaleDetail = idSaleDetail_param;
     end
 //

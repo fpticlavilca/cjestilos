@@ -1,4 +1,3 @@
-
 create table person(
 	idPerson int auto_increment,
     primary key(idPerson),
@@ -10,7 +9,10 @@ create table person(
     lastName varchar(35),
     email varchar(35),
     direction varchar(35),
-    phone varchar(9)
+    phone varchar(9),
+    
+	idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
 create table enterprise(
@@ -39,7 +41,11 @@ create table personEnterprise(
 create table user(
 	idUser int auto_increment,
     primary key(idUser),
-    name varchar(35)
+    name varchar(35),
+     
+	idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
+    
 );
 
 create table personUser(

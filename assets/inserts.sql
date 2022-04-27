@@ -41,8 +41,8 @@ insert into catalogSize(name)values("38");
 insert into catalogSize(name)values("40");
 insert into catalogSize(name)values("42");
 
-insert into catalogStatus(name)values("disable");
 insert into catalogStatus(name)values("enable");
+insert into catalogStatus(name)values("disable");
 insert into catalogStatus(name)values("delete");
 
 insert into catalogTag(name)values("1 botones");
