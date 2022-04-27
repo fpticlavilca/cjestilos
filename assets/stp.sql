@@ -482,7 +482,12 @@ delimiter //
 //
 
 delimiter //
-	create procedure saledetailD()
+	create procedure saledetailD(
+		in idSaleDetail_param int
+    )
     begin
+		update saleDetail set
+        idCatalogStatus = 3
+        where idSaleDetail = idSaleDetail_param;
     end
 //
