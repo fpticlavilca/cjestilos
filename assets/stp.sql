@@ -1,4 +1,4 @@
-/*procedure crud catalog*/
+/*PROCEDURE CRUD CATALOG TAG*/
 use cjestilos;
 
 delimiter //
@@ -6,14 +6,16 @@ create procedure catalogTagC(
 		in name_param varchar(35)
 	)
     begin 
-		insert into catalogTag(name)values(name_param);
+		insert into catalogTag(name,idCatalogStatus)values(name_param,1);
     end
 //
 
 delimiter //
-create procedure catalogTagR()
+create procedure catalogTagR(
+		
+	)
     begin
-		select name from catalogTag;
+		select name from catalogTag where idCatalogStatus = 1;
     end
 //
 
@@ -23,9 +25,7 @@ create procedure catalogTagU(
 		in name_param varchar(35)
     )
     begin
-		update catalogTag 
-        set name = name_param
-        where idCatalogTag = idCatalogTag_param;
+		update catalogTag set name = name_param where idCatalogTag = idCatalogTag_param;
     end
     
 //
@@ -40,15 +40,14 @@ create procedure catalogTagD(
     end
 //
 
-/*procedure crud tags product*/
+/*PROCEDURE CRUD TAG PRODUCT*/
 
 delimiter //
 	create procedure tagProductC(
-		in idProduct_param int,
-        in idCatalogTag_param int
+		in idProduct_param int
 	)
     begin
-		insert into tagProduct(idProduct,idCatalogTag)values(idProduct_param, idCatalogTag_param);
+		insert into tagProduct(idProduct,idCatalogTag)values(idProduct_param,1);
     end
 //
 
@@ -57,7 +56,17 @@ delimiter //
 		in idTagProduct_param int
 	)
     begin
-		select * from tagProduct where idProduct = idProduct_param;
+		select name from tagProduct where idProduct = idProduct_param and idCatalogStatus = 1;
+    end
+//
+
+delimiter //
+	create procedure tagProductU(
+		in idTagProduct_param int,
+		in name_param varchar(35) 
+    )
+    begin
+		update tagProduct set name = name_param where idTagProduct = idTagProduct_param;
     end
 //
 

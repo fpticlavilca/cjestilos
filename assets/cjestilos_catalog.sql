@@ -4,7 +4,6 @@ create table catalogStatus(
 	primary key(idCatalogStatus),
     name varchar(35)
 );
-
 create table catalogGenre(
 	idCatalogGenre int auto_increment,
     primary key(idCatalogGenre),
@@ -26,5 +25,8 @@ create table catalogColor(
 create table catalogTag(
 	idCatalogTag int auto_increment,
     primary key(idCatalogTag),
-    name varchar(35)
+    name varchar(35),
+    idCatalogStatus int,
+    foreign key (idCatalogStatus) references catalogStatus(idCatalogStatus)
+    
 );
