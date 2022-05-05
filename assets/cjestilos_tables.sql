@@ -160,7 +160,6 @@ create table saleDetail(
 
 	idSaleDetail int,
     primary key(idSaleDetail),
-
     idDetailProduct int,
     foreign key(idDetailProduct) references detailProduct(idDetailProduct),
 
