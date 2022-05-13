@@ -1,7 +1,7 @@
 /*PROCEDURE CRUD CATEGORY*/
 
 delimiter //
-create procedure categoryC(
+create procedure stpCategoryC(
 		in name_param varchar(35)
     )
 	begin 
@@ -10,14 +10,14 @@ create procedure categoryC(
 //
 
 delimiter //
-create procedure categoryR()
+create procedure stpCategoryR()
 	begin 
 		select name from category where idCatalogStatus = 1;
 	end
 //
 
 delimiter //
-create procedure categoryU(
+create procedure stpCategoryU(
 		in idCategory_param int, 
 		in name_param varchar(35)
     )
@@ -27,7 +27,7 @@ create procedure categoryU(
 //
 
 delimiter //
-create procedure categoryD(
+create procedure stpCategoryD(
 		in idCatalogStatus_param int,
 		in idCategory_param int
     )

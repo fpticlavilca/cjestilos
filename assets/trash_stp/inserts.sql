@@ -41,6 +41,12 @@ insert into catalogSize(name)values("38");
 insert into catalogSize(name)values("40");
 insert into catalogSize(name)values("42");
 
+insert into catalogSize(name)values("1 plaza");
+insert into catalogSize(name)values("1 1/2 plaza");
+insert into catalogSize(name)values("2 plazas");
+insert into catalogSize(name)values("Queen");
+insert into catalogSize(name)values("King");
+
 insert into catalogStatus(name)values("enable");
 insert into catalogStatus(name)values("disable");
 insert into catalogStatus(name)values("delete");

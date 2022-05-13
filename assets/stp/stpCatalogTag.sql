@@ -2,7 +2,7 @@
 use cjestilos;
 
 delimiter //
-create procedure catalogTagC(
+create procedure stpCatalogTagC(
 		in name_param varchar(35)
 	)
     begin 
@@ -11,7 +11,7 @@ create procedure catalogTagC(
 //
 
 delimiter //
-create procedure catalogTagR(
+create procedure stpCatalogTagR(
 		
 	)
     begin
@@ -20,7 +20,7 @@ create procedure catalogTagR(
 //
 
 delimiter //
-create procedure catalogTagU(
+create procedure stpCatalogTagU(
 		in idCatalogTag_param int,
 		in name_param varchar(35)
     )
@@ -31,7 +31,7 @@ create procedure catalogTagU(
 //
 
 delimiter //
-create procedure catalogTagD(
+create procedure stpCatalogTagD(
 		in idCatalogStatus_param int,
 		in idCatalogTag_param int
     )

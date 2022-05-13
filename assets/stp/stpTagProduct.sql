@@ -1,5 +1,6 @@
 /*PROCEDURE CRUD TAG PRODUCT*/
 
+drop procedure if exists tagProductC;
 delimiter //
 	create procedure tagProductC(
 		in idProduct_param int
@@ -9,6 +10,7 @@ delimiter //
     end
 //
 
+drop procedure if exists tagProductR;
 delimiter //
 	create procedure tagProductR(
 		in idTagProduct_param int
@@ -18,6 +20,7 @@ delimiter //
     end
 //
 
+drop procedure if exists tagProductU;
 delimiter //
 	create procedure tagProductU(
 		in idTagProduct_param int,
@@ -28,6 +31,7 @@ delimiter //
     end
 //
 
+drop procedure if exists tagProductD;
 delimiter //
 	create procedure tagProductD(
 		in idCatalogStatus_param int,

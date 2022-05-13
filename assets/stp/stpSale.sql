@@ -7,11 +7,10 @@ delimiter //
 		in subtotal_param double,
 		in total_param double,
 		in idPayment_param int,
-		in idEnterprise_param int,
-		in idCatalogStatus_param int
+		in idEnterprise_param int
     )
     begin
-		insert into sale(discount,subtotal,total,idPayment,idEnterprise,idCatalogStatus)values(discount_param,subtotal_param,total_param,idPayment_param,idEnterprise_param,idCatalogStatus_param);
+		insert into sale(discount,subtotal,total,idPayment,idEnterprise,idCatalogStatus)values(discount_param,subtotal_param,total_param,idPayment_param,idEnterprise_param,1);
     end
 //
 

@@ -1,7 +1,8 @@
 /*CREATE CRUD ENTERPRISE*/
 
+drop procedure if exists stpEnterpriseC;
 delimiter //
-	create procedure enterpriseC(
+	create procedure stpEnterpriseC(
 		in namePerson_param varchar(35), 
 		in lastNamePerson_param varchar(35), 
 		in emailPerson_param varchar(35),
@@ -22,15 +23,21 @@ delimiter //
     end
 // 
 
+drop procedure if exists stpEnterpriseR;
 delimiter //
-	create procedure enterpriseR()
+	create procedure stpEnterpriseR()
     begin
-		select * from enterprise;
+		select 	enterprise.ruc, enterprise.direction, enterprise.telephone, enterprise.name as enterprise,
+		person.name as namePerson from enterprise
+		
+        inner join personEnterprise on enterprise.idEnterprise = personEnterprise.idEnterprise
+		inner join person on person.idPerson = personEnterprise.idPerson;
     end
 //
 
+drop procedure if exists stpEnterpriseU;
 delimiter //
-	create procedure enterpriseU(
+	create procedure stpEnterpriseU(
 		idPersonEnterprise_param int,
     
         idCatalogGenre int,
@@ -61,8 +68,9 @@ delimiter //
     end
 //
 
+drop procedure if exists stpEnterpriseD;
 delimiter //
-	create procedure enterpriseD(
+	create procedure stpEnterpriseD(
 		in idCatalogStatus_param int,
 		in idPersonEnterprise_param int
 	)
@@ -78,7 +86,3 @@ delimiter //
         
     end
 //
-
-call cjestilos.providerC('Nilda', 'Elenco', 'nelenco@gmail.com', 'Aviacion 2', '956845512', 'Soali', 'Galleria Generales 4to Piso');
-call cjestilos.providerC('Mario', 'Valenzuela', 'mvalenzuela@gmail.com', '', '956623512', 'Damaris', 'Galleria Generales 7to Piso');
-call cjestilos.providerC('Aaron', 'Olenca', 'olenca@gmail.com', '', '956623512', 'Aaron', 'Galleria Generales 7to Piso');

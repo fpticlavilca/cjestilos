@@ -30,3 +30,5 @@ create table catalogTag(
     foreign key (idCatalogStatus) references catalogStatus(idCatalogStatus)
     
 );
+
+

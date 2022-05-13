@@ -1,7 +1,8 @@
 /*CREATE CRUD DETAIL PRODUCT*/
 
+drop procedure if exists stpDetailProductC;
 delimiter //
-create procedure detailtProductC(
+create procedure stpDetailtProductC(
 		in idProduct_param int,
         in idCatalogSize_param int,
         in idCatalogColor_param int,
@@ -14,16 +15,18 @@ create procedure detailtProductC(
     end
 //
 
+drop procedure if exists stpDetailProductR;
 delimiter //
-	create procedure detailtProductR(
+	create procedure stpDetailtProductR(
     )
     begin
 		select * from detailtProduct;
     end
 //
 
+drop procedure if exists stpDetailProductU;
 delimiter //
-	create procedure detailProductU(
+	create procedure stpDetailProductU(
 		in idDetailtProduct_param int,
         
 		in idProduct_param int,
@@ -31,7 +34,6 @@ delimiter //
         in idCatalogColor_param int,
         in salePrice_param double,
         in purchasePrice_param double,
-        in idCatalogStatus_param int,
         in quantity_param int
         )
     begin
@@ -41,13 +43,12 @@ delimiter //
         idCatalogColor = idCatalogColor_param,
         salePrice = salePrice_param,
         purchasePrice = purchasePrice_param,
-        idCatalogStatus = idCatalogStatus_param,
         quantity = quatity_param
         where idDetailtProduct = idDetailtProduct_param;
     end
 //
 delimiter //
-	create procedure detailtProductD(
+	create procedure stpDetailtProductD(
 		in idCatalogStatus_param int,
 		in idDetailtProduct_param int
     )

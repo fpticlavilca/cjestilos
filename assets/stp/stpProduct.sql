@@ -1,17 +1,19 @@
 /*PROCEDURE CRUD PRODUCT*/
 
+drop procedure if exists productC;
 delimiter //
 create procedure productC(
 		in nameProduct_param varchar(35),
         in idCategory_param int,
         in idProvider_param int,
-        in idCatalogGenre_param int
-        
+        in idCatalogGenre_param int        
 	)
     begin 
 		insert into product(name,idCategory,idProvider,idCatalogGenre,idCatalogStatus)values(nameProduct_param,idCategory_param,idProvider_param,idCatalogGenre_param,1);
     end
 //
+
+drop procedure if exists productR;
 delimiter //
 create procedure productR()
     begin 
@@ -23,6 +25,7 @@ create procedure productR()
     end
 //
 
+drop procedure if exists productU;
 delimiter //
 create procedure productU(
 		in idProduct_param int,
@@ -30,8 +33,7 @@ create procedure productU(
 		in nameProduct_param varchar(35),
         in idCategory_param int,
         in idProvider_param int,
-        in idCatalogGenre_param int,
-        in idCatalogStatus_param int
+        in idCatalogGenre_param int
 	)
 	begin 
 		update product 
@@ -39,11 +41,11 @@ create procedure productU(
 				name = nameProduct_param,
 				idCategory = idCategory_param,
                 idProvider = idProvider_param,
-                idCatalogGenre = idCatalogGenre_param,
-                idCatalogStatus = idCatalogStatus_param
+                idCatalogGenre = idCatalogGenre_param
                 where idProduct = idProduct_param;
 	end
 //
+drop procedure if exists productD;
 delimiter //
 create procedure productD(
 		in idCatalogStatus_param int,
