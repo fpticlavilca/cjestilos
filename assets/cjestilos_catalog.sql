@@ -1,4 +1,3 @@
-
 create table catalogStatus(
 	idCatalogStatus int auto_increment,
 	primary key(idCatalogStatus),

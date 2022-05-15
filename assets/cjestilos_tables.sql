@@ -65,6 +65,38 @@ create table personUser(
     foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
+drop table if exists login;
+create table login(
+	idLogin int auto_increment,
+    primary key(idLogin),
+    
+    idPersonUser int,
+    foreign key(idPersonUser) references personUser(idPersonUser),
+    
+    dateLogin timestamp,
+    
+	idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
+);
+
+
+drop table if exists expense;
+create table expense(
+	idExpense int auto_increment,
+    primary key(idExpense),
+    
+    title varchar(35),
+    description tinytext,
+    
+    date timestamp,
+    
+    idPersonUser int,
+    foreign key(idPersonUser) references personUser(idPersonUser),
+    
+    idCatalogStatus int,
+    foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
+);
+
 create table category(
 	idCategory int auto_increment,
     primary key(idCategory),
