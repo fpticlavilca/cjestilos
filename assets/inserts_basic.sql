@@ -5,7 +5,7 @@ insert into catalogGenre(name)values("MN");
 insert into catalogGenre(name)values("HB");
 insert into catalogGenre(name)values("MB");
 insert into catalogGenre(name)values("WO");
-
+	
 insert into catalogColor(name)values("000000");
 insert into catalogColor(name)values("FFFFFF");
 insert into catalogColor(name)values("000000");

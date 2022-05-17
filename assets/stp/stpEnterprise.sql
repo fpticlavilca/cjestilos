@@ -7,17 +7,17 @@ delimiter //
 		in lastNamePerson_param varchar(35), 
 		in emailPerson_param varchar(35),
 		in directionPerson_param varchar(35),
-		in phonePerson_param varchar(35),
+		in phonePerson_param varchar(9),
         
         in nameEnterprise_param varchar(35),
-        in directionEnterprise varchar(35)
+        in directionEnterprise_param varchar(35)
     ) 
     begin
 		DECLARE keyPerson int default 0;
         DECLARE keyEnterprise int default 0;
-		insert into person(name,lastName,email,direction,phone)values(namePerson,lastNamePerson,emailPerson,directionPerson,phonePerson);
+		insert into person(name,lastName,email,direction,phone)values(namePerson_param,lastNamePerson_param,emailPerson_param,directionPerson_param,phonePerson_param);
         set keyPerson = last_insert_id();
-        insert into Enterprise(name,direction)values(nameEnterprise,directionEnterprise);
+        insert into Enterprise(name,direction)values(nameEnterprise_param,directionEnterprise_param);
         set keyEnterprise = last_insert_id();
         insert into personEnterprise(idPerson,idEnterprise)values(keyPerson,keyEnterprise);
     end
@@ -86,3 +86,13 @@ delimiter //
         
     end
 //
+
+call cjestilos.stpEnterpriseC('Jencer', 'Ninguno', 'jercer@email.com', 'Gamarra', '936503888', 'Jencer', 'Gamarra');
+call cjestilos.stpEnterpriseC('Aron', 'Ninguno', 'aaron@email.com', 'Gamarra', '992131086', 'Aron', 'Gamarra');
+call cjestilos.stpEnterpriseC('Brava', 'Ninguno', 'brava@email.com', 'Gamarra', '932396061', 'Brava', 'Gamarra');
+call cjestilos.stpEnterpriseC('América Store', 'Ninguno', 'americastore@email.com', 'Gamarra', '937269156', 'América Store', 'Gamarra');
+call cjestilos.stpEnterpriseC('Grupo Fey', 'Ninguno', 'grupofey@email.com', 'Centro Civico', '992499914', 'Grupo Fey', 'Centro Civico');
+call cjestilos.stpEnterpriseC('Priscila', 'Ninguno', 'prisnik@email.com', 'Gamarra', '992499914', 'Creaciones Prisnik', 'Gamarra');
+call cjestilos.stpEnterpriseC('Elizabeth', 'Ninguno', 'elizabeth@email.com', 'Centro Civico', '923326727', 'Casacas Termicas', 'Centro Civico');
+call cjestilos.stpEnterpriseC('Copo de Nieve Xhh Import Export SAC', 'Ninguno', 'coponieve@email.com', 'Centro Civico', '991802921', 'Copo de Nieve Xhh Import Export SAC', 'Centro Civico');
+call cjestilos.stpEnterpriseC('Polos Economicos de niños','poloseconomicos@email.com', 'Gamarra', '928890530', 'Polos Economicos de niños', 'Gamarra');

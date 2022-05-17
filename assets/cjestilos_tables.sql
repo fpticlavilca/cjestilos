@@ -79,6 +79,14 @@ create table login(
     foreign key(idCatalogStatus) references catalogStatus(idCatalogStatus)
 );
 
+drop table if exists customer;
+	create table customer(
+		idCustomer int auto_increment,
+		primary key(idCustomer),
+        
+        idPerson int,
+        foreign key(idPerson) references person(idPerson)
+);
 
 drop table if exists expense;
 create table expense(
