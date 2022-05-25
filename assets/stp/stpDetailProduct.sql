@@ -1,6 +1,6 @@
 /*CREATE CRUD DETAIL PRODUCT*/
 
-drop procedure if exists stpDetailProductC;
+
 delimiter //
 create procedure stpDetailtProductC(
 		in idProduct_param int,
@@ -15,7 +15,7 @@ create procedure stpDetailtProductC(
     end
 //
 
-drop procedure if exists stpDetailProductR;
+
 delimiter //
 	create procedure stpDetailtProductR(
     )
@@ -24,7 +24,7 @@ delimiter //
     end
 //
 
-drop procedure if exists stpDetailProductU;
+
 delimiter //
 	create procedure stpDetailProductU(
 		in idDetailtProduct_param int,
