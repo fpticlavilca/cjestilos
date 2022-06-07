@@ -1,42 +1,19 @@
 <?php
-    function getConnectionPDO(){
-        try{
-              $pdoConnection = new PDO(
-                            "mysql:host=localhost;dbname=id18444347_cjestilos",
-                            "id18444347_admin",
-                            "(hFg!hhfiXQds_5x");
-                        }
+    class Connection{
 
-        }
-        catch(Exception e){
+        public static function getObjMysqli(){
 
+            $objMysqli = new mysqli("localhost","id18444347_admin","KhTlIjQSl8Rgabr@","id18444347_cjestilos");
+            $objMysqli->set_charset("utf8");
+            if(mysqli_connect_errno()){
+                echo "Connection Falied: ".mysqli_connect_errno();
+            }
+            else{
+                echo "Connection successful";
+            }
+            return $objMysqli;
         }
+
     }
-/*
-    function getConnectionPDO(){
-        try{
-            $pdoConnection = new PDO(
-                "mysql:host=localhost;dbname=id18444347_cjestilos",
-                "id18444347_admin",
-                "(hFg!hhfiXQds_5x");
-
-            }
-            $response = $pdoConnection->prepare("select * from catalogGenre");
-            $response->execute();
-
-            $fields = [];
-
-            foreach($response as $field){
-                $fields[]=$field;
-            }
-            echo json_encode($fields);
-        }
-
-        catch(PDOException $pdoException ){
-            echo $pdoException->getMessage();
-        }
-
-*/
-    getConnectionPDO();
-
+    print_r(Connection::getObjMysqli());
 ?>
