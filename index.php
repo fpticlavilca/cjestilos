@@ -1,19 +1,13 @@
-<?php
-    class Connection{
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listado de Personas</title>
+</head>
+<body>
 
-        public static function getObjMysqli(){
-
-            $objMysqli = new mysqli("localhost","id18444347_admin","KhTlIjQSl8Rgabr@","id18444347_cjestilos");
-            $objMysqli->set_charset("utf8");
-            if(mysqli_connect_errno()){
-                echo "Connection Falied: ".mysqli_connect_errno();
-            }
-            else{
-                echo "Connection successful";
-            }
-            return $objMysqli;
-        }
-
-    }
-    print_r(Connection::getObjMysqli());
-?>
+</body>
+</html>
