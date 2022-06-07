@@ -35,3 +35,21 @@ create procedure stpCategoryD(
 		update category set idCatalogStatus = idCatalogStatus_param where idCategory = idCategory_param;
 	end 
 //
+
+call cjestilos.stpCategoryC('Polos');
+call cjestilos.stpCategoryC('Poleras');
+call cjestilos.stpCategoryC('Jeans');
+call cjestilos.stpCategoryC('Blusas');
+call cjestilos.stpCategoryC('Vestidos');
+call cjestilos.stpCategoryC('Enterizos');
+call cjestilos.stpCategoryC('Chompas');
+call cjestilos.stpCategoryC('Shorts');
+call cjestilos.stpCategoryC('Joggers');
+call cjestilos.stpCategoryC('Toreros');
+call cjestilos.stpCategoryC('Baggi');
+
+call cjestilos.stpCategoryC('Faldas');
+call cjestilos.stpCategoryC('Bustieres');
+call cjestilos.stpCategoryC('Pantalones');
+call cjestilos.stpCategoryC('Tutus');
+call cjestilos.stpCategoryC('Capas');
