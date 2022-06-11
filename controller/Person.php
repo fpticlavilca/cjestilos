@@ -12,8 +12,9 @@ echo $request;
 if($request == "stpCategoryU"){
 echo $request;
 }
-if($request == "stpCategoryD"{
+if($request == "stpCategoryD"){
 echo $request;
 }
+
 
 ?>
