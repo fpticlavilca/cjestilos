@@ -5,6 +5,4 @@
     const database  ="id18444347_cjestilos";
     const charset   ="utf-8";
     const base_url  ="https://cjestilos.000webhostapp.com/index.php";
-
-    
 ?>
